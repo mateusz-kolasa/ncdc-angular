@@ -28,7 +28,7 @@ export const requestGetByAuthor = createAction(
 
 export const getByAuthor = createAction(
     '[Book] Get By Author Success',
-    props<{ author: String }>()
+    props<{ books: Book[] }>()
 );
  
 export const requestRemoveBook = createAction(

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { addHistory } from '../actions/history.actions';
 import { Book } from '../domain/book';
 import { IComponentHistory, IHistoryData } from '../domain/component-history';
+import * as fromActions from "../actions/book.actions"
 
 @Component({
   selector: 'app-author',
@@ -20,6 +21,7 @@ export class AuthorComponent implements OnInit, IComponentHistory {
 
   ngOnInit(): void {
     this.author = this.route.snapshot.paramMap.get('author');
+    this.store.dispatch(fromActions.requestGetByAuthor({author: this.author}));
     this.books$ =  this.store.select(state => state.books.filter(book => book.author == this.author));
 
     this.historyText = this.author;

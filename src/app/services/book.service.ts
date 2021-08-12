@@ -22,4 +22,13 @@ export class BookService {
   addBook(book: Book) : Observable<Book> {
     return this.http.post<Book>(this.url, book);
   }
+
+  getById(id: number) : Observable<Book>{
+    return this.http.get<Book>(this.url + "/" + id);
+  }
+
+  getByAuthor(author: String) : Observable<Book[]>{
+    let query = '/?author=' + author;
+    return this.http.get<Book[]>(this.url + query);
+  }
 }

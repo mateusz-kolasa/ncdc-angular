@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { requestGetAll, getAll, requestRemoveBook, removeBook, requestAddBook, addBook } from '../actions/book.actions';
+import { requestGetAll, getAll, requestRemoveBook, removeBook, requestAddBook, addBook, requestGetOne, getOne, requestGetByAuthor, getByAuthor } from '../actions/book.actions';
 import { BookService } from "../services/book.service"
 
 @Injectable()
@@ -35,6 +35,26 @@ export class BookEffects {
     mergeMap((data) => this.bookService.addBook(data.book)
       .pipe(
         map((data) => addBook({book: data})),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+
+  getById$ = createEffect(() => this.actions$.pipe(
+    ofType(requestGetOne),
+    mergeMap((data) => this.bookService.getById(data.id)
+      .pipe(
+        map((data) => getOne({book: data})),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+
+  getByAuthor$ = createEffect(() => this.actions$.pipe(
+    ofType(requestGetByAuthor),
+    mergeMap((data) => this.bookService.getByAuthor(data.author)
+      .pipe(
+        map((data) => getByAuthor({books: data})),
         catchError(() => EMPTY)
       ))
     )
