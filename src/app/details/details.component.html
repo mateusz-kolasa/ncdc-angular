@@ -1,0 +1,7 @@
+<div *ngIf="book$ | async as book">
+    <div><span>Id: </span>{{book.id}}</div>
+    <div><span>Title: </span>{{book.title}}</div>
+    <div><span>Author: </span>{{book.author}}</div>
+</div>
+
+<button pButton type="button" label="Back" routerLink="/table"></button>

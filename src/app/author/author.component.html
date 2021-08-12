@@ -1,0 +1,7 @@
+<h2>{{author}}</h2>
+<h3>Books:</h3>
+<div *ngFor="let book of books$ | async">
+    <div>{{book.title}}</div>
+</div>
+
+<button pButton type="button" label="Back" routerLink="/table"></button>

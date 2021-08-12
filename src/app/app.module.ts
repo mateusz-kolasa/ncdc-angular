@@ -18,7 +18,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { BookEffects } from "../app/effects/book.effects"
 import { EffectsModule } from '@ngrx/effects';
-import { bookReducer } from "../app/reducers/book.reducer"
+import { bookReducer } from "../app/reducers/book.reducer";
+import { DetailsComponent } from './details/details.component';
+import { AuthorComponent } from './author/author.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { bookReducer } from "../app/reducers/book.reducer"
     HeaderComponent,
     TableComponent,
     FormComponent,
-    StartComponent
+    StartComponent,
+    DetailsComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,

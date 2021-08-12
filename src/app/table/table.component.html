@@ -9,9 +9,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-book>
         <tr>
-            <td>{{book.id}}</td>
+            <td><a routerLink="/id/{{book.id}}">{{book.id}}</a></td>
             <td>{{book.title}}</td>
-            <td>{{book.author}}</td>
+            <td><a routerLink="/author/{{book.author}}">{{book.author}}</a></td>
             <td><button pButton type="button" label="Remove" (click)="remove(book.id)"></button></td>
         </tr>
     </ng-template>
