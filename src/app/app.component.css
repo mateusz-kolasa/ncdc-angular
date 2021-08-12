@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+}
+
+.container .main{
+    width: auto;
+    margin-right: 35px;
+}
+
+.container .history{
+    width: auto;
+    margin-left: auto;
+}

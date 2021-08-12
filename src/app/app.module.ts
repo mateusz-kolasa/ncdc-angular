@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { BookEffects } from "../app/effects/book.effects"
 import { EffectsModule } from '@ngrx/effects';
 import { bookReducer } from "../app/reducers/book.reducer";
+import { historyReducer } from "../app/reducers/history.reducer";
 import { DetailsComponent } from './details/details.component';
 import { AuthorComponent } from './author/author.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +27,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { HistoryComponent } from './history/history.component';
+import { HistoryEffects } from './effects/history.effects';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import {MessageModule} from 'primeng/message';
     FormComponent,
     StartComponent,
     DetailsComponent,
-    AuthorComponent
+    AuthorComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +54,8 @@ import {MessageModule} from 'primeng/message';
     MessageModule,
     MessagesModule,
     HttpClientModule,
-    EffectsModule.forRoot([BookEffects]),
-    StoreModule.forRoot({books: bookReducer})
+    EffectsModule.forRoot([BookEffects, HistoryEffects]),
+    StoreModule.forRoot({books: bookReducer, history: historyReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

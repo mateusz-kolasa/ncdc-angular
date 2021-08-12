@@ -1,0 +1,6 @@
+<h3>History: </h3>
+<div *ngFor="let hist of history$ | async">
+    <div>
+        <a routerLink="{{hist.url}}"><p>{{hist.historyDisplay}}</p></a>
+    </div>
+</div>
