@@ -1,1 +1,18 @@
-<p>table works!</p>
+<p-table [value]="books$ | async">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td><button pButton type="button" label="Remove" (click)="remove(book.id)"></button></td>
+        </tr>
+    </ng-template>
+</p-table>
