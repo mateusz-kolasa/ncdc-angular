@@ -21,6 +21,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { bookReducer } from "../app/reducers/book.reducer";
 import { DetailsComponent } from './details/details.component';
 import { AuthorComponent } from './author/author.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -34,10 +39,16 @@ import { AuthorComponent } from './author/author.component'
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ButtonModule,
     TabMenuModule,
     TableModule,
+    InputNumberModule,
+    InputTextModule,
+    MessageModule,
+    MessagesModule,
     HttpClientModule,
     EffectsModule.forRoot([BookEffects]),
     StoreModule.forRoot({books: bookReducer})

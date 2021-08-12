@@ -14,5 +14,9 @@ export const bookReducer = createReducer(
     (state, action) => state),
   on(Actions.removeBook, 
     (state, action) => state = state.filter(item => item.id != action.id)),
+  on(Actions.requestAddBook, 
+    (state, action) => state),
+  on(Actions.addBook, 
+    (state, action) => state = [...state, action.book]),
 );
 

@@ -1,1 +1,36 @@
-<p>form works!</p>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <table>
+        <tr>
+            <td><label for="id">Id: </label></td>
+            <td><p-inputNumber id="id" formControlName="id" mode="decimal"></p-inputNumber></td>
+        </tr>
+        <tr *ngIf="!bookForm.controls['id'].valid && (bookForm.controls['id'].dirty || bookForm.controls['id'].touched)">
+            <td colspan="2">
+                <p-message severity="error" text="Id must not be empty"></p-message>
+            </td>
+        </tr>
+
+        <tr>
+           <td><label for="title">Title: </label> 
+            <td><input type="text" p-pInputText  id="titile" formControlName ="title"> </td>
+        </tr>
+        <tr *ngIf="!bookForm.controls['title'].valid && (bookForm.controls['title'].dirty || bookForm.controls['title'].touched)">
+            <td colspan="2">
+                <p-message severity="error" text="Title must have atleast 7 characters"></p-message>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="author">Author: </label>
+            <td><input type="text" p-pInputText  id="author" formControlName="author"> </td>
+        </tr>
+        <tr *ngIf="!bookForm.controls['author'].valid && (bookForm.controls['author'].dirty || bookForm.controls['author'].touched)">
+            <td colspan="2">
+                <p-message severity="error" text="Author name must not be empty"></p-message>
+            </td>
+        </tr>
+    </table>
+
+    <button pButton type="submit" [disabled]="bookForm.invalid">Submit</button>
+    <button pButton type="button" (click)="goBack()">Back</button>
+</form>

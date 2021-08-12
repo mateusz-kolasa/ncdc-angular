@@ -18,4 +18,8 @@ export class BookService {
   removeBook(index: number) {
     return this.http.delete<Book[]>(this.url + "/" + index);
   }
+
+  addBook(book: Book) : Observable<Book> {
+    return this.http.post<Book>(this.url, book);
+  }
 }
